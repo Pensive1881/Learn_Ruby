@@ -1,0 +1,91 @@
+class RPNCalculator
+  attr_accessor :calculator
+
+  def initialize
+    @calculator = []
+  end
+  
+  def push(num)
+    @calculator.push(num)
+  end
+
+  def value
+    @calculator.last
+  end
+  
+  def plus
+    if @calculator.size > 1
+      x = @calculator.pop(1)
+	  y = @calculator.pop(1)
+	  @calculator.push(y.first+x.first)
+	else
+	  raise "calculator is empty"
+	end
+  end
+  
+  def minus
+    if @calculator.size > 1
+      x = @calculator.pop(1)
+	  y = @calculator.pop(1)
+	  @calculator.push(y.first-x.first)
+	else
+	  raise "calculator is empty"
+	end
+  end
+  
+  def divide
+    if @calculator.size > 1
+      x = @calculator.pop(1)
+	  y = @calculator.pop(1)
+	  @calculator.push(y.first.round(2)/x.first.round(2))
+	else
+	  raise "calculator is empty"
+	end
+  end
+  
+  def times
+    if @calculator.size > 1
+      x = @calculator.pop(1)
+	  y = @calculator.pop(1)
+	  @calculator.push(y.first.round(2)*x.first.round(2))
+	else
+	  raise "calculator is empty"
+	end
+  end
+  
+  def tokens(string)
+    array = string.split(' ')
+    array.map! do |x|
+	  if x == '*'
+	    x.to_sym
+	  elsif x == '/'
+	    :/
+	  elsif x == '+'
+	    :+
+	  elsif x == '-'
+	    :-
+	  else
+	    x.to_i
+	  end
+	end
+	array
+  end
+  
+  def evaluate(string)
+    tokens(string).each do |x|
+	  if x == :*
+	    times
+	  elsif x == :/
+	    divide
+	  elsif x == :+
+	    plus
+	  elsif x == :-
+	    minus
+	  else
+	    push(x)
+	  end
+	end
+	value
+  end
+end
+
