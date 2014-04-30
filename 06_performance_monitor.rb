@@ -10,12 +10,12 @@ def measure(times = 0)
     time = 0
     i=0
     while i < times
-	  start_time = Time.now
-	  end_time = yield
-	  total_time = start_time - end_time
-	  time += total_time.to_i
-	  i+=1
-	end
-	time.abs/times.round(1)
+      start_time = Time.now
+      end_time = yield
+      total_time = start_time - end_time
+      time += total_time.to_i
+      i+=1
+    end
+    time.abs/times.round(1)
   end
 end
