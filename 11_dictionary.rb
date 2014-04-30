@@ -11,10 +11,10 @@ class Dictionary
   
   def add(hash)
     if hash.is_a?(String)
-	  @entry = {hash => nil}
-	else
+      @entry = {hash => nil}
+    else
       @entry.merge!(hash)
-	end
+    end
   end
   
   def keywords
@@ -27,24 +27,24 @@ class Dictionary
   
   def find(thing)
     if @entry.keys.size > 1
-	  new_entry = @entry.keys.to_a
-	  i = 0
-	  while i < new_entry.length
-		new_entry[i]
-		if new_entry[i].index(thing) == nil
-		  new_entry[i]
-		  @entry.delete(new_entry[i])
-		end
-		i+=1
-	  end
-	elsif @entry.keys.include?(thing) == false
-	  @entry = {}
-	elsif @entry.keys.size == 1
-	  x={}
-	  x.store(thing,@entry[thing])
-	  @entry.merge!(x)
+      new_entry = @entry.keys.to_a
+      i = 0
+      while i < new_entry.length
+        new_entry[i]
+        if new_entry[i].index(thing) == nil
+	  new_entry[i]
+	  @entry.delete(new_entry[i])
 	end
-	@entry
+	i+=1
+      end
+    elsif @entry.keys.include?(thing) == false
+      @entry = {}
+    elsif @entry.keys.size == 1
+      x={}
+      x.store(thing,@entry[thing])
+      @entry.merge!(x)
+    end
+    @entry
   end
   
   def printable
