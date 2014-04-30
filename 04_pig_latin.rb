@@ -3,17 +3,17 @@ def translate(string)
   i = 0
   while i < words.size
     letters = words[i].split('')
-	cons = ""
+    cons = ""
     letters.each do |i|
-	  if cons[-1] == 'q' && i == 'u'
-	   cons << i
-	  end
-	  break if i =~ /[aeiou]/
+      if cons[-1] == 'q' && i == 'u'
+        cons << i
+      end
+      break if i =~ /[aeiou]/
       cons << i
     end
     words[i] = letters.join << cons << 'ay'
-	words[i] = words[i].reverse.chomp(cons.reverse).reverse
-	i += 1
+    words[i] = words[i].reverse.chomp(cons.reverse).reverse
+    i += 1
   end
   words.join(' ')
 end
