@@ -11,13 +11,13 @@ class Array
 
   def square
     if self == []
-	    []
-	  else
-	    self.map!{|x| x*x}
-	  end
+      []
+    else
+      self.map!{|x| x*x}
+    end
   end
   
   def square!
-	  self.map!{|x| x*x}
+    self.map!{|x| x*x}
   end
 end
