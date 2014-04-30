@@ -1,12 +1,12 @@
 class Temperature
   def initialize(options = {})
     @c = options[:c]
-	@f = options[:f]
+    @f = options[:f]
     if options.include?(:f)
-	  @c = ((@f - 32) * 5) / 9
-	elsif options.include?(:c)
-	  @f = ((@c * 9.0) / 5.0) + 32.0
-	end
+      @c = ((@f - 32) * 5) / 9
+    elsif options.include?(:c)
+      @f = ((@c * 9.0) / 5.0) + 32.0
+    end
   end
   
   def in_celsius
@@ -26,7 +26,6 @@ class Temperature
   def self.from_fahrenheit(temp)
     Temperature.new(:f => temp)
   end
-  
 end
 
 
