@@ -3,8 +3,8 @@ class XmlDocument
 
   def initialize(indent = false)
     if indent == true
-	    @indent = indent
-	  end
+      @indent = indent
+    end
   end
   
   def send(name)
@@ -13,63 +13,63 @@ class XmlDocument
   
   def hello(name = nil, &block)
     if block != nil
-	    if @indent == true
-		    string = block.call
-		    return "<hello>\n#{string}</hello>\n"
-	    else
-	      string = block.call
-	      return "<hello>#{string}</hello>"
-	    end
-	  end
+      if @indent == true
+        string = block.call
+	return "<hello>\n#{string}</hello>\n"
+      else
+	string = block.call
+	return "<hello>#{string}</hello>"
+      end
+    end
     if name == nil
-	    greeting = "<hello/>"
-	  else
-	    name = name.to_a
-	    greeting = "<hello name='#{name[0][1]}'/>"
-	  end
+      greeting = "<hello/>"
+    else
+      name = name.to_a
+      greeting = "<hello name='#{name[0][1]}'/>"
+    end
   end
 
   def goodbye(name = nil, &block)
     if block != nil
-	    if @indent == true
-		    string = block.call
-		    return "  <goodbye>\n#{string}  </goodbye>\n"
-	    else
-	      string = block.call
-	      return "<goodbye>#{string}</goodbye>"
-	    end
-	  end
+      if @indent == true
+        string = block.call
+	return "  <goodbye>\n#{string}  </goodbye>\n"
+      else
+        string = block.call
+        return "<goodbye>#{string}</goodbye>"
+      end
+    end
     if name == nil
-	    greeting = "<goodbye/>"
-	  end
+      greeting = "<goodbye/>"
+    end
   end
 
   def come_back(name = nil, &block)
     if block != nil
-	    if @indent == true
-	      string = block.call
-		    return "    <come_back>\n#{string}    </come_back>\n"
-	    else
-	      string = block.call
-	      return "<come_back>#{string}</come_back>"
-	    end
- 	  end
+      if @indent == true
+	string = block.call
+	return "    <come_back>\n#{string}    </come_back>\n"
+      else
+	string = block.call
+	return "<come_back>#{string}</come_back>"
+      end
+    end
     if name == nil
-	    greeting = "<come_back/>"
-	  end
+      greeting = "<come_back/>"
+    end
   end
   
   def ok_fine(name = nil, &block)
     if name == nil
-	    greeting = "<ok_fine/>"
-	  else
-	    if @indent == true
-	      name = name.keys.to_a.join + "="
-	      greeting = "      <ok_fine #{name}'that_way'/>\n"
-	    else
-	      name = name.keys.to_a.join + "="
-	      greeting = "<ok_fine #{name}'that_way'/>"
-	    end
-	  end
+      greeting = "<ok_fine/>"
+    else
+      if @indent == true
+	name = name.keys.to_a.join + "="
+	greeting = "      <ok_fine #{name}'that_way'/>\n"
+      else
+	name = name.keys.to_a.join + "="
+	greeting = "<ok_fine #{name}'that_way'/>"
+      end
+    end
   end
 end
